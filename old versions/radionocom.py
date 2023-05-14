@@ -69,7 +69,7 @@ def main():
     search_button.grid(row=0, column=2, padx=10, pady=10)
 
     clear_button = tk.Button(window, text="Clear", font=("Lucida Handwriting", 15), command=clear_genre_entry)
-    clear_button.grid(row=0, column=3, padx=5, pady=10, sticky="e")
+    clear_button.grid(row=0, column=1, padx=0, pady=10, sticky="e")
 
     #genres = ["Acid Jazz", "Acid Rock", "Alternative", "Ambient", "Americana", "Avant Garde", "Bachata", "Big Band", "Bluegrass", "Blues", "Bossa Nova", "Cajun", "Calypso", "Caribbean", "Celtic", "Chamber", "Chant", "Chillout", "Choral", "Christian", "Classical", "Classic Rock", "Comedy", "Contemporary", "Country", "Cumbia", "Dance", "Darkwave", "Death Metal", "Disco", "Drum and Bass", "Dub", "Easy Listening", "Electronic", "Emo", "Experimental", "Folk", "Funk", "Gangsta", "Garage Rock", "Gospel", "Gothic", "Grindcore", "Grunge", "Hard Rock", "Hardcore", "Heavy Metal", "Hip Hop", "House", "Indie", "Industrial", "Instrumental", "J-Pop", "Jazz", "Jungle", "Latin", "Lounge", "Merengue", "Metal", "Minimal", "New Age", "Noise", "Opera", "Orchestral", "Piano", "Polka", "Pop", "Progressive", "Psychedelic", "Punk", "R&B", "Rap", "Reggae", "Reggaeton", "Rhythm and Blues", "Rock", "Rockabilly", "Salsa", "Samba", "Ska", "Smooth Jazz", "Soft Rock", "Soul", "Soundtrack", "Southern Rock", "Spanish", "Symphonic", "Synthpop", "Tango", "Techno", "Trance", "Trip Hop", "World", "Zydeco"]
 
@@ -85,7 +85,7 @@ def main():
     station_list.grid(row=2, column=0, columnspan=4, padx=10, pady=10)
 
     clock_label = tk.Label(window, text="", font=("Lucida Handwriting", 16))
-    clock_label.grid(row=3, column=3, columnspan=4, padx=10, pady=10)
+    clock_label.grid(row=3, column=3, columnspan=4, padx=20, pady=10)
     update_clock()
 
     window.mainloop()
