@@ -1,10 +1,11 @@
+#import libraries
 import requests
 import geocoder
 import tkinter as tk
 import webbrowser
 import datetime
 
-
+# Retrieves radio stations based on the provided genre
 def get_stations_by_genre(genre):
     url = f"http://all.api.radio-browser.info/json/stations/bytagexact/{genre}"
     response = requests.get(url)
@@ -12,11 +13,11 @@ def get_stations_by_genre(genre):
 
     return stations
 
-
+# Opens the provided URL to play the radio station
 def play_station(url):
     webbrowser.open(url)
 
-
+# Searches for radio stations based on the entered genre
 def search_stations(genre_entry, station_list):
     genre = genre_entry.get()
     stations = get_stations_by_genre(genre)
@@ -34,11 +35,11 @@ def search_stations(genre_entry, station_list):
     else:
         station_list.insert(tk.END, "No stations found for this genre")
 
-
+# Clears the genre entry field
 def clear_genre_entry(genre_entry):
     genre_entry.delete(0, tk.END)
 
-
+# Updates the clock label with the current time and date
 def update_clock(clock_label):
     now = datetime.datetime.now()
     current_time = now.strftime("%H:%M:%S")
@@ -46,7 +47,7 @@ def update_clock(clock_label):
     clock_label.config(text=f"{current_time}\n {current_date}")
     clock_label.after(1000, update_clock, clock_label)
 
-
+# Retrieves the current weather information using the OpenWeatherMap API
 def get_weather(api_key):
     g = geocoder.ip("me")
     lat, lng = g.latlng
@@ -60,7 +61,7 @@ def get_weather(api_key):
 
 api_key = "7035e16a4c557d2b0aba5937df50a409"
 
-
+# Displays the current weather information in a separate window
 def display_weather():
     weather_data = get_weather(api_key)
     if weather_data:
@@ -115,7 +116,7 @@ def display_weather():
     )
     wind_direction_label.pack()
 
-
+# Main function to set up the GUI and execute the program
 def main():
     window = tk.Tk()
     window.title("Foxy Radio Selection")
