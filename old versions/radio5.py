@@ -48,44 +48,14 @@ def update_clock(clock_label):
 
 
 def get_weather(api_key):
-    g = geocoder.ip('me')
+    g = geocoder.ip("me")
     lat, lng = g.latlng
-    url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={api_key}&units=metric'
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={api_key}&units=metric"
     response = requests.get(url)
     data = response.json()
-    #print(response.text)
+    print(response.text)
 
     return data
-
-def display_weather(api_key):
-    weather_data = get_weather(api_key)
-    if weather_data['cod'] != 200:
-        error_message = f"Error: {weather_data['message']}"
-        weather_window = tk.Toplevel()
-        weather_window.title('Current Weather')
-        weather_window.geometry('200x100')
-        error_label = tk.Label(weather_window, text=error_message)
-        error_label.pack()
-    else:
-        temp = weather_data['main']['temp']
-        condition = weather_data['weather'][0]['description']
-        pressure = weather_data['main']['pressure']
-
-        # Create a new window to display the weather information
-        weather_window = tk.Toplevel()
-        weather_window.title('Current Weather')
-        weather_window.geometry('200x130')
-
-        # Add labels to display the temperature, weather condition, and pressure
-        temp_label = tk.Label(weather_window, text=f'Temperature: {temp}°C')
-        temp_label.pack()
-
-        condition_label = tk.Label(weather_window, text=f'Condition: {condition}')
-        condition_label.pack()
-
-        pressure_label = tk.Label(weather_window, text=f'Pressure: {pressure} hPa')
-        pressure_label.pack()
-
 
 
 def main():
@@ -134,42 +104,33 @@ def main():
     clock_label.place(x=612, y=120)
     update_clock(clock_label)
 
-    api_key = '7035e16a4c557d2b0aba5937df50a409'
+    api_key = "7035e16a4c557d2b0aba5937df50a409"
 
     def display_weather():
         weather_data = get_weather(api_key)
         if weather_data:
-            # Parse the weather data to extract relevant information
-            temp = weather_data['main']['temp']
-            condition = weather_data['weather'][0]['description']
-            pressure = weather_data['main']['pressure']
-           # speed = weather_data['main']['speed']
+            temp = weather_data["main"]["temp"]
+            condition = weather_data["weather"][0]["description"]
+            pressure = weather_data["main"]["pressure"]
 
-
-
-            # Create a new window to display the weather information
             weather_window = tk.Toplevel()
-            weather_window.title('Current Weather')
-            weather_window.geometry('200x100')
+            weather_window.title("Current Weather")
+            weather_window.geometry("200x100")
 
-            # Add labels to display the temperature and weather condition
-            temp_label = tk.Label(weather_window, text=f'Temperature: {temp}°C')
+            temp_label = tk.Label(weather_window, text=f"Temperature: {temp}°C")
             temp_label.pack()
 
-            condition_label = tk.Label(weather_window, text=f'Condition: {condition}')
+            condition_label = tk.Label(weather_window, text=f"Condition: {condition}")
             condition_label.pack()
 
-            pressure_label = tk.Label(weather_window, text=f'Pressure: {pressure} hPa')
+            pressure_label = tk.Label(weather_window, text=f"Pressure: {pressure} hPa")
             pressure_label.pack()
-
-            #speed_label = tk.Label(weather_window, text=f'Wind: {speed}')
-            #speed_label.pack()
-
-
 
         else:
             # Display an error message if weather data couldn't be retrieved
-            tk.messagebox.showerror(title='Error', message='Could not retrieve weather data')
+            tk.messagebox.showerror(
+                title="Error", message="Could not retrieve weather data"
+            )
 
     weather_button = tk.Button(
         window,
@@ -179,8 +140,8 @@ def main():
     )
     weather_button.place(x=680, y=5)
 
-    
     window.mainloop()
+
 
 if __name__ == "__main__":
     main()
