@@ -4,19 +4,37 @@ import geocoder
 import tkinter as tk
 import webbrowser
 import datetime
+import json
+import logging
+
+logging.basicConfig(
+    filename="app.log",
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    level=logging.DEBUG
+)
+
+
+with open("config.json") as config_file:
+        config = json.load(config_file)
+        api_key = config["api_key"]
 
 # Retrieves radio stations based on the provided genre
 def get_stations_by_genre(genre):
     url = f"http://all.api.radio-browser.info/json/stations/bytagexact/{genre}"
+    logging.info(f"Sending API request to {url}")
     response = requests.get(url)
     stations = response.json()
+    #logging.debug(f"API response: {stations}")
 
     return stations
 
+
 # Opens the provided URL to play the radio station
 def play_station(url):
+    logging.info(f"Playing radio station: {url}")
     webbrowser.open(url)
 
+    
 # Searches for radio stations based on the entered genre
 def search_stations(genre_entry, station_list):
     genre = genre_entry.get()
@@ -49,17 +67,23 @@ def update_clock(clock_label):
 
 # Retrieves the current weather information using the OpenWeatherMap API
 def get_weather(api_key):
-    g = geocoder.ip("me")
-    lat, lng = g.latlng
-    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={api_key}&units=metric"
-    response = requests.get(url)
-    data = response.json()
-    print(response.text)
+    try:
+        g = geocoder.ip("me")
+        lat, lng = g.latlng
+        url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={api_key}&units=metric"
+        logging.info(f"Sending API request to {url}")
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+        data = response.json()
+        logging.debug(f"API response: {data}")
+        return data
+    except (requests.exceptions.RequestException, ValueError) as e:
+        logging.error(f"Error occurred during weather API request: {e}")
+        return None
 
-    return data
 
 
-api_key = "7035e16a4c557d2b0aba5937df50a409"
+#api_key = "7035e16a4c557d2b0aba5937df50a409"
 
 # Displays the current weather information in a separate window
 def display_weather():
@@ -71,50 +95,66 @@ def display_weather():
         wind_speed = weather_data["wind"]["speed"]
         wind_degree = weather_data["wind"]["deg"]
 
-    if wind_degree is not None:
-        directions = [
-            "N",
-            "NNE",
-            "NE",
-            "ENE",
-            "E",
-            "ESE",
-            "SE",
-            "SSE",
-            "S",
-            "SSW",
-            "SW",
-            "WSW",
-            "W",
-            "WNW",
-            "NW",
-            "NNW",
-        ]
-        index = round(wind_degree / (360.0 / len(directions)))
-        wind_direction = directions[index % len(directions)]
+        if wind_degree is not None:
+            directions = [
+                "N",
+                "NNE",
+                "NE",
+                "ENE",
+                "E",
+                "ESE",
+                "SE",
+                "SSE",
+                "S",
+                "SSW",
+                "SW",
+                "WSW",
+                "W",
+                "WNW",
+                "NW",
+                "NNW",
+            ]
+            index = round(wind_degree / (360.0 / len(directions)))
+            wind_direction = directions[index % len(directions)]
+            logging.info("Weather information displayed.")
+        else:
+            wind_direction = "N/A"
+
+        weather_window = tk.Toplevel()
+        weather_window.title("Current Weather")
+        weather_window.geometry("250x150")
+
+        temp_label = tk.Label(weather_window, text=f"Temperature: {temp}°C")
+        temp_label.pack()
+
+        condition_label = tk.Label(weather_window, text=f"Condition: {condition}")
+        condition_label.pack()
+
+        pressure_label = tk.Label(weather_window, text=f"Pressure: {pressure} hPa")
+        pressure_label.pack()
+
+        wind_speed_label = tk.Label(weather_window, text=f"Wind Speed: {wind_speed} m/s")
+        wind_speed_label.pack()
+
+        wind_direction_label = tk.Label(
+            weather_window, text=f"Wind Direction: {wind_direction} ({wind_degree}°)"
+        )
+        wind_direction_label.pack()
     else:
-        wind_direction = "N/A"
+        # Handle the case where an error occurred during the API request
+        weather_window = tk.Toplevel()
+        weather_window.title("Error")
+        weather_window.geometry("200x100")
 
-    weather_window = tk.Toplevel()
-    weather_window.title("Current Weather")
-    weather_window.geometry("250x150")
+        error_label = tk.Label(
+            weather_window,
+            text="An error occurred while fetching weather data.",
+            font=("Lucida Handwriting", 12),
+            fg="red",
+        )
+        error_label.pack()
 
-    temp_label = tk.Label(weather_window, text=f"Temperature: {temp}°C")
-    temp_label.pack()
 
-    condition_label = tk.Label(weather_window, text=f"Condition: {condition}")
-    condition_label.pack()
-
-    pressure_label = tk.Label(weather_window, text=f"Pressure: {pressure} hPa")
-    pressure_label.pack()
-
-    wind_speed_label = tk.Label(weather_window, text=f"Wind Speed: {wind_speed} m/s")
-    wind_speed_label.pack()
-
-    wind_direction_label = tk.Label(
-        weather_window, text=f"Wind Direction: {wind_direction} ({wind_degree}°)"
-    )
-    wind_direction_label.pack()
 
 # Main function to set up the GUI and execute the program
 def main():
