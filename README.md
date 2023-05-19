@@ -17,6 +17,8 @@ To get started, follow these simple steps:
 
 5. If you want to clear the genre entry field, click on the "Clear" button.
 
+6. Press "Show weather" button, and you will see current weather in separate window. 
+
 
 
 That's it! We hope you enjoy using Foxy Radio Selection App to discover new and exciting radio stations.
