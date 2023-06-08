@@ -7,7 +7,7 @@
 ### Welcome to Foxy Radio Selection App! (version 1.1) This app allows you to search for radio stations based on a genre of your choice and play them in your default web browser.
 To get started, follow these simple steps:
 
-1. Launch the Foxy Radio Selection app by running the foxy_radio.py script.
+1. Launch the Foxy Radio Selection app by running the project.py script.
 
 2. Enter a genre of your choice in the "Enter genre" field.
 
