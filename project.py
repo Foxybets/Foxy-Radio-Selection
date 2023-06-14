@@ -122,7 +122,7 @@ def display_weather():
 
         weather_window = tk.Toplevel()
         weather_window.title("Current Weather")
-        weather_window.geometry("250x150")
+        weather_window.geometry("250x150+697+250")
 
         temp_label = tk.Label(weather_window, text=f"Temperature: {temp}°C")
         temp_label.pack()
@@ -151,7 +151,7 @@ def display_weather():
         error_label = tk.Label(
             weather_window,
             text="An error occurred while fetching weather data.",
-            font=("Garamond", 12),
+            font=("Courier New", 12),
             fg="red",
         )
         error_label.pack()
@@ -168,7 +168,7 @@ def main():
     bg_label.place(x=0, y=0, relwidth=1, relheight=1)
     bg_label.lower()
 
-    genre_label = tk.Label(window, text="Enter genre:", font=("Garamond", 16))
+    genre_label = tk.Label(window, text="Enter genre:", font=("Courier New", 16))
     genre_label.place(x=10, y=10)
 
     genre_entry = tk.Entry(window)
@@ -177,7 +177,7 @@ def main():
     search_button = tk.Button(
         window,
         text="Search",
-        font=("Garamond", 18),
+        font=("Courier New", 18),
         command=lambda: search_stations(genre_entry, station_list),
     )
     search_button.place(x=365, y=5)
@@ -185,7 +185,7 @@ def main():
     clear_button = tk.Button(
         window,
         text="Clear",
-        font=("Garamond", 15),
+        font=("Courier New", 15),
         command=lambda: clear_genre_entry(genre_entry),
     )
     clear_button.place(x=290, y=5)
@@ -193,21 +193,21 @@ def main():
     instructions_label = tk.Label(
         window,
         text="<<Welcome to Foxy Radio Selection App.>>\nEnter a genre and click Search to find radio stations. Double-click on a station to play it.",
-        font=("Garamond", 16),
+        font=("Courier New", 16),
     )
     instructions_label.place(x=10, y=60)
 
     station_list = tk.Listbox(window, height=80, width=50)
     station_list.place(x=10, y=120)
 
-    clock_label = tk.Label(window, text="", font=("Garamond", 16))
+    clock_label = tk.Label(window, text="", font=("Courier New", 16))
     clock_label.place(x=612, y=120)
     update_clock(clock_label)
 
     weather_button = tk.Button(
         window,
         text="Show Weather",
-        font=("Garamond", 15),
+        font=("Courier New", 15),
         command=display_weather,
     )
     weather_button.place(x=680, y=5)
