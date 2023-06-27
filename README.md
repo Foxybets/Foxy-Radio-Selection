@@ -36,6 +36,18 @@ This file provides a short description of the project and outlines the steps to 
 
 *Graphical User Interface (GUI): The project employs the Tkinter library to create an interactive GUI for the Foxy Radio Selection application. The GUI provides an intuitive interface for users to input the genre, view search results, and interact with radio stations.
 
+
+## Debated Design Choices
+
+During the development of the Foxy Radio Selection project, several design choices were considered and debated. Here are some of the notable decisions:
+
+*GUI Framework: Tkinter was chosen as the GUI framework due to its simplicity and compatibility with Python. It provides the necessary functionality to create a responsive and visually appealing interface.
+
+*Weather Display: The decision to display the weather information in a separate window was made to keep the main application window uncluttered and focused on radio station search and playback. By separating the weather display, users can access weather information when desired without overwhelming the main interface.
+
+*Logging Level: The logging level was set to DEBUG to capture detailed information about the application's activity. This level of logging can be helpful during development and troubleshooting, as it provides insights into API requests, errors, and other events.
+
+
 ## How to Use
 
 To run the Foxy Radio Selection project, follow these steps:
@@ -58,15 +70,7 @@ To run the Foxy Radio Selection project, follow these steps:
 
 Enjoy exploring and listening to your favorite radio stations!
 
-## Debated Design Choices
 
-During the development of the Foxy Radio Selection project, several design choices were considered and debated. Here are some of the notable decisions:
-
-*GUI Framework: Tkinter was chosen as the GUI framework due to its simplicity and compatibility with Python. It provides the necessary functionality to create a responsive and visually appealing interface.
-
-*Weather Display: The decision to display the weather information in a separate window was made to keep the main application window uncluttered and focused on radio station search and playback. By separating the weather display, users can access weather information when desired without overwhelming the main interface.
-
-*Logging Level: The logging level was set to DEBUG to capture detailed information about the application's activity. This level of logging can be helpful during development and troubleshooting, as it provides insights into API requests, errors, and other events.
 
 
 
