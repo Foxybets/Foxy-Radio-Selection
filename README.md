@@ -5,12 +5,12 @@
 
 ## Description:
 
-### The Foxy Radio Selection project is a Python application that allows users to search for and play radio stations based on their preferred genre. It provides a user-friendly graphical interface where users can enter a genre, click the search button, and get a list of radio stations matching that genre. They can then double-click on a station to play it.
+ The Foxy Radio Selection project is a Python application that allows users to search for and play radio stations based on their preferred genre. It provides a user-friendly graphical interface where users can enter a genre, click the search button, and get a list of radio stations matching that genre. They can then double-click on a station to play it.
 
 
 ## Files
 
-### *project.py: This is the main file of the project that contains the code for the Foxy Radio Selection application. It imports necessary libraries and defines various functions for retrieving radio stations, playing stations, searching stations, displaying weather information, and setting up the graphical user interface (GUI). The main function is responsible for running the program.
+ *project.py: This is the main file of the project that contains the code for the Foxy Radio Selection application. It imports necessary libraries and defines various functions for retrieving radio stations, playing stations, searching stations, displaying weather information, and setting up the graphical user interface (GUI). The main function is responsible for running the program.
 
 *images/background.png: This folder contains a background image file that is used to enhance the visual appearance of the application's GUI.
 
@@ -24,7 +24,7 @@
 
 ## Design Choices
 
-### *Logging: The project utilizes the logging module to create log files (app.log) that record the application's activity. The log files store information about API requests, errors, and other relevant events, which can be helpful for debugging and troubleshooting.
+ *Logging: The project utilizes the logging module to create log files (app.log) that record the application's activity. The log files store information about API requests, errors, and other relevant events, which can be helpful for debugging and troubleshooting.
 
 *API Integration: The project integrates with two external APIs. It uses the Radio-Browser API to retrieve radio stations based on the provided genre. Additionally, it utilizes the OpenWeatherMap API to fetch current weather information based on the user's location. These APIs enhance the functionality and user experience of the application.
 
@@ -32,7 +32,7 @@
 
 ## How to Use
 
-### To run the Foxy Radio Selection project, follow these steps:
+To run the Foxy Radio Selection project, follow these steps:
 
 1. Install the required dependencies listed in the requirements.txt file using the command: pip install -r requirements.txt.
 
@@ -54,7 +54,7 @@ Enjoy exploring and listening to your favorite radio stations!
 
 ## Debated Design Choices
 
-### During the development of the Foxy Radio Selection project, several design choices were considered and debated. Here are some of the notable decisions:
+During the development of the Foxy Radio Selection project, several design choices were considered and debated. Here are some of the notable decisions:
 
 *GUI Framework: Tkinter was chosen as the GUI framework due to its simplicity and compatibility with Python. It provides the necessary functionality to create a responsive and visually appealing interface.
 
