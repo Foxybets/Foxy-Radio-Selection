@@ -1,5 +1,5 @@
 # Foxy-Radio-Selection
-## Radio guide, search for world favorite radio stations as a background while you work, study or just relax
+Radio guide, search for world favorite radio stations as a background while you work, study or just relax.
 
 ### Video Demo: [URL HERE]
 
@@ -10,17 +10,23 @@
 
 ## Files
 
- *project.py: This is the main file of the project that contains the code for the Foxy Radio Selection application. It imports necessary libraries and defines various functions for retrieving radio stations, playing stations, searching stations, displaying weather information, and setting up the graphical user interface (GUI). The main function is responsible for running the program.
+### project.py:
+This is the main file of the project that contains the code for the Foxy Radio Selection application. It imports necessary libraries and defines various functions for retrieving radio stations, playing stations, searching stations, displaying weather information, and setting up the graphical user interface (GUI). The main function is responsible for running the program.
 
-*images/background.png: This folder contains a background image file that is used to enhance the visual appearance of the application's GUI.
+### images/background.png: 
+This folder contains a background image file that is used to enhance the visual appearance of the application's GUI.
 
-*config.json: This file stores the API key required for retrieving weather information. It is read by the project.py file to access the API key.
+### config.json: 
+This file stores the API key required for retrieving weather information. It is read by the project.py file to access the API key.
 
-*requirements.txt: This file lists the necessary libraries and their versions required for running the project. You can use the pip install -r requirements.txt command to install these dependencies.
+### requirements.txt: 
+This file lists the necessary libraries and their versions required for running the project. You can use the pip install -r requirements.txt command to install these dependencies.
 
-*test_project.py: This file contains the test cases for the functions implemented in the project.py file. It uses the pytest framework to execute the tests and ensure the correctness of the project's functionality.
+### test_project.py: 
+This file contains the test cases for the functions implemented in the project.py file. It uses the pytest framework to execute the tests and ensure the correctness of the project's functionality.
 
-*readme.txt: This file provides a short description of the project and outlines the steps to use it. However, the README.md file you are currently reading is a more comprehensive and detailed documentation of the project.
+### readme.txt: 
+This file provides a short description of the project and outlines the steps to use it. However, the README.md file you are currently reading is a more comprehensive and detailed documentation of the project.
 
 ## Design Choices
 
