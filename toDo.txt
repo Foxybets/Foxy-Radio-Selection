@@ -1,6 +1,8 @@
 <<<<<<< HEAD
 write tests
 change fonts
+add favourites feature
+
 =======
 
 >>>>>>> 1517ac34ec4841313b094b702f4f47d2e6d1a255
